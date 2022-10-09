@@ -1,0 +1,24 @@
+{
+  "name": "",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start:dev": "",
+    "start": "npm run start --prefix ./client/ && npm run server --prefix ./server/",
+    "server": "",
+    "build": "",
+    "install": "",
+    "client": ""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "if-env": "^1.0.4"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "nodemon": "^2.0.4"
+  }
+}
