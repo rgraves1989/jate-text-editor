@@ -19,18 +19,17 @@ module.exports = () => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-       title: 'J.A.T.E.',
-       inject: true,
        template: './index.html',
       }),
       new WebpackPwaManifest({
-        filename: "mainfest.json",
-        display: "standalone",
-        inject: true,
         name: "J.A.T.E",
-        crossorigin: null,
+        short_name: "J.A.T.E.",
+        description: "Just Another Text Editor",
+        display: "standalone",
         start_url: "/",
-        public_path: "/",
+        publicPath: "/",
+        fingerprints: false,
+        inject: true,
         icons: [
           {
             src: path.resolve('src/images/logo.png'),
@@ -46,19 +45,23 @@ module.exports = () => {
     module: {
       rules: [
         {
+          test: /\.css$/i,
+          use: ["style-loader", "css-loader"]
+        },
+        {
           test: /\.m?js$/,
           exclude: /(node_modules|bower_components)/,
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env']
+              presets: ['@babel/preset-env'],
+              plugins: [
+                '@babel/plugin-proposal-object-rest-spread',
+                '@babel/transform-runtime',
+              ],
             }
           }
         },
-        {
-          test: /\.css$/i,
-          use: ["style-loader", "css-loader"]
-        }
       ],
     },
   };
