@@ -23,5 +23,9 @@ butInstall.addEventListener('click', async () => {
 
 // TODO: Add an handler for the `appinstalled` event
 window.addEventListener('appinstalled', (event) => {
-	deferredPrompt - null;
+	deferredPrompt = null;
 });
+
+if(window.matchMedia('(display-mode: standalone)').matches) {
+	butInstall.classList.toggle('hidden', true); 
+}  
